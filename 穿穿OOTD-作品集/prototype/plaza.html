@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>穿穿OOTD · 穿搭广场</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-sb::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#EFE9E1]">
+<div class="relative w-full h-full max-w-[375px] max-h-[812px] bg-[#FBF8F3] overflow-hidden flex flex-col shadow-[0_18px_50px_rgba(120,130,140,0.18)]">
+<div class="shrink-0 h-[44px] px-5 flex items-center justify-between text-[14px] font-semibold text-[#3D4C5A]">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<iconify-icon class="text-[14px]" icon="mdi:signal"></iconify-icon>
+<iconify-icon class="text-[14px]" icon="mdi:wifi"></iconify-icon>
+<iconify-icon class="text-[16px]" icon="mdi:battery"></iconify-icon>
+</div>
+</div>
+<header class="shrink-0 px-4 pb-2 pt-1">
+<div class="flex items-center justify-between">
+<h1 class="text-[20px] font-bold text-[#3D4C5A]">穿搭广场</h1>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" onclick="showToast('搜索功能为原型演示')" type="button">
+<iconify-icon class="text-[18px]" icon="ph:magnifying-glass"></iconify-icon>
+</button>
+<a class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" href="profile.html">
+<iconify-icon class="text-[18px]" icon="ph:user"></iconify-icon>
+</a>
+</div>
+</div>
+<div class="mt-3 flex gap-5">
+<button class="pb-1 text-[14px] font-semibold text-[#3D4C5A] border-b-2 border-[#55708C]" id="feedRecommend" onclick="switchFeed('recommend', this)" type="button">推荐</button>
+<button class="pb-1 text-[14px] text-[#8A99A6] border-b-2 border-transparent" id="feedFollow" onclick="switchFeed('follow', this)" type="button">关注</button>
+<button class="pb-1 text-[14px] text-[#8A99A6] border-b-2 border-transparent" id="feedNearby" onclick="switchFeed('nearby', this)" type="button">同城 杭州</button>
+</div>
+</header>
+<div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-sb px-4 pb-24">
+<p class="pt-2 text-[11px] text-[#A9B4BD]" id="feedTip">推荐 · 根据你的风格偏好（简约 / 法式）与身材档案推荐</p>
+<div class="mt-3 columns-2 gap-3">
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[188px] bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]">
+<img alt="User OOTD photo with cream cardigan and straight jeans in Hangzhou" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/e422650857e44ccd9c5235e68b5d9cd8.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">早秋通勤：奶油开衫 + 直筒牛仔，22℃ 刚刚好</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#E9F1F8] text-[10px] text-[#55708C]">薇</span>
+<span class="text-[10px] text-[#8A99A6]">薇子穿什么</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">128</span>
+</button>
+</div>
+</div>
+</article>
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[148px] bg-gradient-to-br from-[#F7EDEE] to-[#F3EFF7]">
+<img alt="User OOTD photo with beige trench coat in autumn street" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/67d1e508e0bf473cba66e075e5dac084.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">风衣叠穿第三年，还是最稳妥的面试战袍</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#F7E3E4] text-[10px] text-[#C98A90]">阿</span>
+<span class="text-[10px] text-[#8A99A6]">阿桃不加糖</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">96</span>
+</button>
+</div>
+</div>
+</article>
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[164px] bg-gradient-to-br from-[#EDF4F0] to-[#F6F1E9]">
+<img alt="User OOTD photo in cozy knit sweater at cafe" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/ca0fb23afeca4e2786dd0433f18599ba.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">周末咖啡店瘫着，毛衣 + 阔腿裤真的显瘦</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#EDF4F0] text-[10px] text-[#6E9A7E]">林</span>
+<span class="text-[10px] text-[#8A99A6]">林一一</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">243</span>
+</button>
+</div>
+</div>
+</article>
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[206px] bg-gradient-to-br from-[#F3F0F8] to-[#F8F2E9]">
+<img alt="User OOTD photo in floral dress at riverside sunset" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/e6c0d7824dff4598a62261e2c72a448d.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">碎花裙 + 小外套，江边日落穿搭记录</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#F1EFF8] text-[10px] text-[#7E76A8]">鹿</span>
+<span class="text-[10px] text-[#8A99A6]">鹿小满</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">512</span>
+</button>
+</div>
+</div>
+</article>
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[150px] bg-gradient-to-br from-[#F8F2E9] to-[#EEF4F9]">
+<img alt="User OOTD photo with white sneakers and denim skirt" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/05733a9652f6456793c1764c005a081f.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">小个子显高公式：短上衣 + 高腰 A 字裙</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#F8F2E9] text-[10px] text-[#A98F5C]">周</span>
+<span class="text-[10px] text-[#8A99A6]">周小九</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">77</span>
+</button>
+</div>
+</div>
+</article>
+<article class="mb-3 break-inside-avoid overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white">
+<div class="relative h-[176px] bg-gradient-to-br from-[#E9F1F8] to-[#F2F6F9]">
+<img alt="User OOTD photo with misty blue shirt in office" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/16dca42204224640a7502575ac1984c9.jpg"/>
+<span class="absolute left-2 top-2 rounded-full bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位 · OOTD 图</span>
+</div>
+<div class="p-2.5">
+<p class="text-[12px] leading-5 text-[#3D4C5A]">雾霾蓝衬衫的第五种穿法：当外套披</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#E9F1F8] text-[10px] text-[#55708C]">苏</span>
+<span class="text-[10px] text-[#8A99A6]">苏打绿不绿</span>
+<button class="ml-auto flex items-center gap-1 text-[10px] text-[#A9B4BD]" data-liked="0" onclick="toggleLike(this)" type="button">
+<iconify-icon class="text-[14px]" icon="ph:heart"></iconify-icon>
+<span class="js-like-count">168</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<a class="absolute bottom-[98px] right-4 z-30 flex items-center gap-2 rounded-full bg-gradient-to-r from-[#8FAECB] to-[#E4A8AD] px-4 py-3 text-[13px] font-semibold text-white shadow-[0_12px_24px_rgba(140,169,198,0.4)]" href="ootd_publish.html">
+<iconify-icon class="text-[18px]" icon="ph:camera"></iconify-icon>
+      发 OOTD
+    </a>
+<nav class="relative shrink-0 h-[76px] border-t border-[#F1EBE3] bg-white/95 px-1">
+<div class="grid h-full grid-cols-5">
+<a class="flex flex-col items-center gap-1 pt-3 text-[#55708C]" href="home.html">
+<iconify-icon class="text-[22px]" icon="ph:house"></iconify-icon>
+<span class="text-[10px] font-medium">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="wardrobe.html">
+<iconify-icon class="text-[22px]" icon="ph:t-shirt"></iconify-icon>
+<span class="text-[10px]">衣柜</span>
+</a>
+<a class="relative flex flex-col items-center pt-3" href="ai_outfit.html">
+<span class="absolute -top-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gradient-to-br from-[#8FAECB] to-[#E4A8AD] text-white shadow-[0_10px_22px_rgba(126,157,190,0.45)]">
+<iconify-icon class="text-[24px]" icon="ph:sparkle"></iconify-icon>
+</span>
+<span class="mt-[32px] text-[10px] text-[#A9B4BD]">AI搭配</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="idle_stats.html">
+<iconify-icon class="text-[22px]" icon="ph:chart-pie"></iconify-icon>
+<span class="text-[10px]">统计</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="profile.html">
+<iconify-icon class="text-[22px]" icon="ph:user"></iconify-icon>
+<span class="text-[10px]">我的</span>
+</a>
+</div>
+<div class="absolute bottom-[6px] left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-[#DDE3E8]"></div>
+</nav>
+<div class="pointer-events-none absolute bottom-[170px] left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-[#3D4C5A]/90 px-4 py-2 text-[12px] text-white" id="toast"></div>
+</div>
+<aside class="absolute right-8 top-1/2 hidden w-[300px] -translate-y-1/2 rounded-2xl border border-[#E7E0D6] bg-white/75 p-5 text-[#3D4C5A] shadow-[0_12px_30px_rgba(120,130,140,0.12)] backdrop-blur xl:block">
+<div class="flex items-center gap-2 text-[12px] text-[#8A99A6]">
+<span class="rounded-full bg-[#E3ECF4] px-2 py-0.5 font-semibold text-[#55708C]">12</span>
+<span>穿搭广场 · plaza.html</span>
+</div>
+<h3 class="mt-3 text-[15px] font-semibold">作用</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">灵感与社交场：看别人怎么穿，把自己的搭配发布出去获得反馈。</p>
+<h3 class="mt-3 text-[15px] font-semibold">主要交互</h3>
+<ul class="mt-1 list-disc pl-4 text-[13px] leading-6 text-[#5E6E7C]">
+<li>顶部「推荐 / 关注 / 同城」切换信息流并更新说明文案</li>
+<li>双列瀑布流卡片展示图片、文案、作者与点赞</li>
+<li>点击爱心切换点赞状态并即时增减数字</li>
+<li>右下角「发 OOTD」进入发布页</li>
+</ul>
+<h3 class="mt-3 text-[15px] font-semibold">跳转链路</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">ootd_publish.html / profile.html / home.html</p>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">画布 375×812 · iOS · 状态栏保留</p>
+</aside>
+<script>
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      window.clearTimeout(window.__t);
+      window.__t = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1700);
+    }
+
+    function switchFeed(feed, btn) {
+      var tabs = [document.getElementById('feedRecommend'), document.getElementById('feedFollow'), document.getElementById('feedNearby')];
+      tabs.forEach(function (tab) {
+        tab.className = 'pb-1 text-[14px] text-[#8A99A6] border-b-2 border-transparent';
+      });
+      btn.className = 'pb-1 text-[14px] font-semibold text-[#3D4C5A] border-b-2 border-[#55708C]';
+      var tips = {
+        recommend: '推荐 · 根据你的风格偏好（简约 / 法式）与身材档案推荐',
+        follow: '关注 · 你关注的 12 位用户更新了 6 条 OOTD',
+        nearby: '同城 杭州 · 1.2km 内今天的 38 条穿搭记录'
+      };
+      document.getElementById('feedTip').textContent = tips[feed] || tips.recommend;
+    }
+
+    function toggleLike(btn) {
+      var icon = btn.querySelector('iconify-icon');
+      var num = btn.querySelector('.js-like-count');
+      var liked = btn.getAttribute('data-liked') === '1';
+      btn.setAttribute('data-liked', liked ? '0' : '1');
+      icon.setAttribute('icon', liked ? 'ph:heart' : 'ph:heart-fill');
+      num.textContent = String(parseInt(num.textContent, 10) + (liked ? -1 : 1));
+      btn.classList.toggle('text-[#E4919A]', !liked);
+      btn.classList.toggle('text-[#A9B4BD]', liked);
+    }
+  </script>
+</body>
+</html>

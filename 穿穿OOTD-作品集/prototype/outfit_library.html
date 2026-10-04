@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>穿穿OOTD · 我的搭配</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-sb::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#EFE9E1]">
+<div class="relative w-full h-full max-w-[375px] max-h-[812px] bg-[#FBF8F3] overflow-hidden flex flex-col shadow-[0_18px_50px_rgba(120,130,140,0.18)]">
+<div class="shrink-0 h-[44px] px-5 flex items-center justify-between text-[14px] font-semibold text-[#3D4C5A]">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<iconify-icon class="text-[14px]" icon="mdi:signal"></iconify-icon>
+<iconify-icon class="text-[14px]" icon="mdi:wifi"></iconify-icon>
+<iconify-icon class="text-[16px]" icon="mdi:battery"></iconify-icon>
+</div>
+</div>
+<header class="shrink-0 h-[52px] px-4 flex items-center justify-between">
+<a class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" href="profile.html">
+<iconify-icon class="text-[20px]" icon="ph:caret-left"></iconify-icon>
+</a>
+<h1 class="text-[16px] font-semibold text-[#3D4C5A]">我的搭配</h1>
+<button class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" onclick="showToast('已按最近穿着排序')" type="button">
+<iconify-icon class="text-[18px]" icon="ph:arrows-down-up"></iconify-icon>
+</button>
+</header>
+<div class="shrink-0 px-4 pb-2">
+<div class="flex rounded-[14px] bg-[#F2EEE7] p-1">
+<button class="flex-1 rounded-[11px] bg-white py-2 text-[13px] font-medium text-[#55708C] shadow-sm" id="tabCards" onclick="switchView('cards')" type="button">搭配卡片流</button>
+<button class="flex-1 rounded-[11px] py-2 text-[13px] text-[#8A99A6]" id="tabCalendar" onclick="switchView('calendar')" type="button">搭配日历</button>
+</div>
+</div>
+<div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-sb px-4 pb-24">
+<div id="viewCards">
+<div class="flex items-center justify-between pt-1">
+<p class="text-[12px] text-[#8A99A6]">已保存 12 套 · 本月新增 4 套</p>
+<a class="text-[12px] text-[#7E9DBE]" href="ai_outfit.html">再去搭配</a>
+</div>
+<div class="mt-3 space-y-3">
+<div class="overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_6px_16px_rgba(140,169,198,0.08)]">
+<div class="relative h-[168px] bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]">
+<img alt="Saved outfit look with cream cardigan and jeans" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/f9fcef2f2ad443d487ff20c15be2ca7d.jpg"/>
+<span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[10px] text-[#8A99A6]">图位 · 搭配效果图</span>
+<span class="absolute bottom-2.5 right-2.5 rounded-full bg-[#55708C] px-2 py-0.5 text-[10px] text-white">适配度 96%</span>
+</div>
+<div class="p-3.5">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-[14px] font-semibold text-[#3D4C5A]">奶油通勤三件套</p>
+<p class="mt-1 text-[11px] text-[#A9B4BD]">10月2日 穿着 · 通勤 · 22℃ · 4 件单品</p>
+</div>
+<span class="rounded-full bg-[#E9F1F8] px-2 py-0.5 text-[10px] text-[#55708C]">穿过 2 次</span>
+</div>
+<div class="mt-3 flex gap-2">
+<a class="flex-1 rounded-[12px] border border-[#F1EBE3] py-2 text-center text-[12px] text-[#6E7B88]" href="outfit_result.html">查看详情</a>
+<a class="flex-1 rounded-[12px] bg-[#55708C] py-2 text-center text-[12px] text-white" href="ootd_publish.html">发布 OOTD</a>
+</div>
+</div>
+</div>
+<div class="overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_6px_16px_rgba(140,169,198,0.08)]">
+<div class="relative h-[168px] bg-gradient-to-br from-[#F7EDEE] to-[#F3EFF7]">
+<img alt="Saved outfit look with beige trench coat and knit skirt" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/8f6e0c3813c84af1bb0bfd25603ca640.jpg"/>
+<span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[10px] text-[#8A99A6]">图位 · 搭配效果图</span>
+<span class="absolute bottom-2.5 right-2.5 rounded-full bg-[#C98A90] px-2 py-0.5 text-[10px] text-white">适配度 92%</span>
+</div>
+<div class="p-3.5">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-[14px] font-semibold text-[#3D4C5A]">米色风衣面试装</p>
+<p class="mt-1 text-[11px] text-[#A9B4BD]">9月28日 穿着 · 面试 · 19℃ · 5 件单品</p>
+</div>
+<span class="rounded-full bg-[#F7E3E4] px-2 py-0.5 text-[10px] text-[#C98A90]">穿过 1 次</span>
+</div>
+<div class="mt-3 flex gap-2">
+<a class="flex-1 rounded-[12px] border border-[#F1EBE3] py-2 text-center text-[12px] text-[#6E7B88]" href="outfit_result.html">查看详情</a>
+<a class="flex-1 rounded-[12px] bg-[#55708C] py-2 text-center text-[12px] text-white" href="ootd_publish.html">发布 OOTD</a>
+</div>
+</div>
+</div>
+<div class="overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_6px_16px_rgba(140,169,198,0.08)]">
+<div class="relative h-[168px] bg-gradient-to-br from-[#EDF4F0] to-[#F6F1E9]">
+<img alt="Saved cozy outfit with oversized sweater and wide-leg trousers" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/e8e32c79c1f14bec84bcd6af15627893.jpg"/>
+<span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[10px] text-[#8A99A6]">图位 · 搭配效果图</span>
+<span class="absolute bottom-2.5 right-2.5 rounded-full bg-[#7BA98F] px-2 py-0.5 text-[10px] text-white">适配度 89%</span>
+</div>
+<div class="p-3.5">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-[14px] font-semibold text-[#3D4C5A]">奶油毛衣居家松弛装</p>
+<p class="mt-1 text-[11px] text-[#A9B4BD]">9月21日 穿着 · 居家 · 24℃ · 3 件单品</p>
+</div>
+<span class="rounded-full bg-[#EDF4F0] px-2 py-0.5 text-[10px] text-[#6E9A7E]">穿过 3 次</span>
+</div>
+<div class="mt-3 flex gap-2">
+<a class="flex-1 rounded-[12px] border border-[#F1EBE3] py-2 text-center text-[12px] text-[#6E7B88]" href="outfit_result.html">查看详情</a>
+<a class="flex-1 rounded-[12px] bg-[#55708C] py-2 text-center text-[12px] text-white" href="ootd_publish.html">发布 OOTD</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden" id="viewCalendar">
+<div class="mt-1 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-[#F7F4EF] text-[#55708C]" onclick="showToast('已切换到 9 月')" type="button">
+<iconify-icon class="text-[16px]" icon="ph:caret-left"></iconify-icon>
+</button>
+<h2 class="text-[15px] font-semibold text-[#3D4C5A]">2026 年 10 月</h2>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-[#F7F4EF] text-[#55708C]" onclick="showToast('已切换到 11 月')" type="button">
+<iconify-icon class="text-[16px]" icon="ph:caret-right"></iconify-icon>
+</button>
+</div>
+<div class="mt-4 grid grid-cols-7 gap-y-2 text-center text-[11px] text-[#A9B4BD]">
+<span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+</div>
+<div class="mt-2 grid grid-cols-7 gap-y-2 text-center">
+<span class="-mx-0.5"></span>
+<span class="-mx-0.5"></span>
+<span class="-mx-0.5"></span>
+<span class="-mx-0.5"></span>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月1日 · 通勤 · 奶油通勤三件套')" type="button">1</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月2日 · 通勤 · 奶油通勤三件套')" type="button">2</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月3日 · 居家 · 奶油毛衣居家松弛装')" type="button">3</button>
+<button class="-mx-0.5 rounded-[10px] bg-[#55708C] py-2 text-[12px] font-semibold text-white" onclick="pickDay(this, '10月4日 · 今日已记录 · 奶油通勤三件套')" type="button">4</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月5日 · 暂无记录')" type="button">5</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月6日 · 暂无记录')" type="button">6</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月7日 · 暂无记录')" type="button">7</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月8日 · 约会 · 周末约会甜酷装')" type="button">8</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月9日 · 暂无记录')" type="button">9</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月10日 · 通勤 · 雾霾蓝衬衫组合')" type="button">10</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月11日 · 暂无记录')" type="button">11</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月12日 · 旅行 · 轻便旅行三件套')" type="button">12</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月13日 · 暂无记录')" type="button">13</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月14日 · 暂无记录')" type="button">14</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月15日 · 聚会 · 甜酷皮衣组合')" type="button">15</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月16日 · 暂无记录')" type="button">16</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月17日 · 暂无记录')" type="button">17</button>
+<button class="-mx-0.5 rounded-[10px] py-2 text-[12px] text-[#6E7B88]" onclick="pickDay(this, '10月18日 · 通勤 · 灰色西装通勤装')" type="button">18</button>
+</div>
+<div class="mt-3 flex items-center gap-4 border-t border-[#F4EFE8] pt-3 text-[10px] text-[#A9B4BD]">
+<span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-[#55708C]"></span>今天</span>
+<span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-[#E4A8AD]"></span>有穿搭记录</span>
+<span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-[#E4DED5]"></span>未记录</span>
+</div>
+</div>
+<div class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<h3 class="text-[14px] font-semibold text-[#3D4C5A]">当日穿搭</h3>
+<span class="text-[11px] text-[#7E9DBE]">本月已记录 9 天</span>
+</div>
+<p class="mt-2 text-[12px] text-[#6E7B88]" id="dayInfo">10月4日 · 今日已记录 · 奶油通勤三件套</p>
+<div class="mt-3 flex items-center gap-3">
+<span class="relative h-[64px] w-[64px] shrink-0 overflow-hidden rounded-[14px] bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]">
+<img alt="Outfit photo recorded on October fourth" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/e76d828d5d5548e0b69a64f5c9131139.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[8px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1 text-[12px] leading-5 text-[#7C8B99]">奶油白针织开衫 + 雾霾蓝衬衫 + 直筒牛仔裤 + 白色小白鞋</span>
+<a class="shrink-0 rounded-full bg-[#55708C] px-3 py-2 text-[11px] text-white" href="outfit_result.html">查看</a>
+</div>
+</div>
+</div>
+</div>
+<nav class="relative shrink-0 h-[76px] border-t border-[#F1EBE3] bg-white/95 px-1">
+<div class="grid h-full grid-cols-5">
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="home.html">
+<iconify-icon class="text-[22px]" icon="ph:house"></iconify-icon>
+<span class="text-[10px]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="wardrobe.html">
+<iconify-icon class="text-[22px]" icon="ph:t-shirt"></iconify-icon>
+<span class="text-[10px]">衣柜</span>
+</a>
+<a class="relative flex flex-col items-center pt-3" href="ai_outfit.html">
+<span class="absolute -top-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gradient-to-br from-[#8FAECB] to-[#E4A8AD] text-white shadow-[0_10px_22px_rgba(126,157,190,0.45)]">
+<iconify-icon class="text-[24px]" icon="ph:sparkle"></iconify-icon>
+</span>
+<span class="mt-[32px] text-[10px] font-medium text-[#55708C]">AI搭配</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="idle_stats.html">
+<iconify-icon class="text-[22px]" icon="ph:chart-pie"></iconify-icon>
+<span class="text-[10px]">统计</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="profile.html">
+<iconify-icon class="text-[22px]" icon="ph:user"></iconify-icon>
+<span class="text-[10px]">我的</span>
+</a>
+</div>
+<div class="absolute bottom-[6px] left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-[#DDE3E8]"></div>
+</nav>
+<div class="pointer-events-none absolute bottom-[170px] left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-[#3D4C5A]/90 px-4 py-2 text-[12px] text-white" id="toast"></div>
+</div>
+<aside class="absolute right-8 top-1/2 hidden w-[300px] -translate-y-1/2 rounded-2xl border border-[#E7E0D6] bg-white/75 p-5 text-[#3D4C5A] shadow-[0_12px_30px_rgba(120,130,140,0.12)] backdrop-blur xl:block">
+<div class="flex items-center gap-2 text-[12px] text-[#8A99A6]">
+<span class="rounded-full bg-[#E3ECF4] px-2 py-0.5 font-semibold text-[#55708C]">09</span>
+<span>我的搭配库 · outfit_library.html</span>
+</div>
+<h3 class="mt-3 text-[15px] font-semibold">作用</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">收藏已保存的搭配，并用日历回顾每天穿了什么，形成可复用的穿搭资产。</p>
+<h3 class="mt-3 text-[15px] font-semibold">主要交互</h3>
+<ul class="mt-1 list-disc pl-4 text-[13px] leading-6 text-[#5E6E7C]">
+<li>顶部「搭配卡片流 / 搭配日历」切换视图</li>
+<li>卡片可进入详情或直接「发布 OOTD」</li>
+<li>日历中点击某天，下方「当日穿搭」同步更新</li>
+<li>月份左右切换为原型提示</li>
+</ul>
+<h3 class="mt-3 text-[15px] font-semibold">跳转链路</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">outfit_result.html / ootd_publish.html / ai_outfit.html</p>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">画布 375×812 · iOS · 状态栏保留</p>
+</aside>
+<script>
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      window.clearTimeout(window.__t);
+      window.__t = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1700);
+    }
+
+    function switchView(view) {
+      var cards = document.getElementById('viewCards');
+      var calendar = document.getElementById('viewCalendar');
+      var tabCards = document.getElementById('tabCards');
+      var tabCalendar = document.getElementById('tabCalendar');
+      if (view === 'cards') {
+        cards.classList.remove('hidden');
+        calendar.classList.add('hidden');
+        tabCards.className = 'flex-1 rounded-[11px] bg-white py-2 text-[13px] font-medium text-[#55708C] shadow-sm';
+        tabCalendar.className = 'flex-1 rounded-[11px] py-2 text-[13px] text-[#8A99A6]';
+      } else {
+        cards.classList.add('hidden');
+        calendar.classList.remove('hidden');
+        tabCards.className = 'flex-1 rounded-[11px] py-2 text-[13px] text-[#8A99A6]';
+        tabCalendar.className = 'flex-1 rounded-[11px] bg-white py-2 text-[13px] font-medium text-[#55708C] shadow-sm';
+      }
+    }
+
+    function pickDay(btn, info) {
+      document.getElementById('dayInfo').textContent = info;
+      showToast('已切换到 ' + info.split(' · ')[0]);
+    }
+  </script>
+</body>
+</html>

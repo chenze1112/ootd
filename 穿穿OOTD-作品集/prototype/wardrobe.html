@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>穿穿OOTD · 我的衣柜</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-sb::-webkit-scrollbar { display: none; }
+  input::placeholder { color: #B4BFC8; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#EFE9E1]">
+<div class="relative w-full h-full max-w-[375px] max-h-[812px] bg-[#FBF8F3] overflow-hidden flex flex-col shadow-[0_18px_50px_rgba(120,130,140,0.18)]">
+<div class="shrink-0 h-[44px] px-5 flex items-center justify-between text-[14px] font-semibold text-[#3D4C5A]">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<iconify-icon class="text-[14px]" icon="mdi:signal"></iconify-icon>
+<iconify-icon class="text-[14px]" icon="mdi:wifi"></iconify-icon>
+<iconify-icon class="text-[16px]" icon="mdi:battery"></iconify-icon>
+</div>
+</div>
+<header class="shrink-0 px-4 pb-2 pt-1 flex items-center justify-between">
+<div>
+<h1 class="text-[20px] font-bold text-[#3D4C5A]">我的衣柜</h1>
+<p class="mt-0.5 text-[11px] text-[#8A99A6]">共 86 件 · 本季常穿 24 件 · 闲置 18 件</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" onclick="openSort()" type="button">
+<iconify-icon class="text-[18px]" icon="ph:sliders-horizontal"></iconify-icon>
+</button>
+<a class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" href="capture.html">
+<iconify-icon class="text-[18px]" icon="ph:funnel"></iconify-icon>
+</a>
+</div>
+</header>
+<div class="shrink-0 px-4 pb-1">
+<div class="flex items-center gap-2 rounded-[14px] bg-[#F2EEE7] px-3 py-2.5">
+<iconify-icon class="text-[18px] text-[#A9B4BD]" icon="ph:magnifying-glass"></iconify-icon>
+<input class="w-full bg-transparent text-[13px] text-[#3D4C5A] outline-none" list="wardrobeSuggest" placeholder="搜索单品名称、颜色或标签"/>
+<datalist id="wardrobeSuggest">
+<option value="白色针织开衫"></option>
+<option value="雾霾蓝衬衫"></option>
+<option value="米色风衣"></option>
+</datalist>
+</div>
+</div>
+<div class="shrink-0 -mx-0 mt-2 flex gap-2 overflow-x-auto no-sb px-4 pb-2">
+<button class="shrink-0 rounded-full bg-[#55708C] px-3.5 py-1.5 text-[12px] font-medium text-white" data-cat="all" onclick="filterCat('all', this)" type="button">全部 86</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="top" onclick="filterCat('top', this)" type="button">上装 24</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="bottom" onclick="filterCat('bottom', this)" type="button">下装 16</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="dress" onclick="filterCat('dress', this)" type="button">连衣裙 9</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="coat" onclick="filterCat('coat', this)" type="button">外套 11</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="shoes" onclick="filterCat('shoes', this)" type="button">鞋履 12</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="bag" onclick="filterCat('bag', this)" type="button">包袋 8</button>
+<button class="shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]" data-cat="acc" onclick="filterCat('acc', this)" type="button">配饰 6</button>
+</div>
+<div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-sb px-4 pb-24">
+<div class="grid grid-cols-2 gap-3" id="grid">
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="top" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EFF4F9] to-[#F7EDEE]">
+<img alt="White knit cardigan flat lay on cream background" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/8d631775b4ec41dc9124fcdd12c473d1.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 23 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">白色针织开衫</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">上装 · 奶油白 · 春秋</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="top" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#E9F1F8] to-[#F2F6F9]">
+<img alt="Misty blue button-up shirt on wooden hanger" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/72133f5e17bc4d5b970b7bd8757d0b60.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 11 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">雾霾蓝衬衫</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">上装 · 雾霾蓝 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="bottom" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EDF1F7] to-[#E7EDF4]">
+<img alt="Straight-leg light denim jeans folded neatly" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/a5ce5b95c1b64fa5945940c48574e17e.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 31 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">直筒牛仔裤</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">下装 · 浅牛仔蓝 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="bottom" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EFEFF2] to-[#E8E9EC]">
+<img alt="Black tailored wide-leg trousers hanging on rack" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/7280b59dc1204c0ea7c9cdebe4dbe2f9.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 8 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">黑色西装阔腿裤</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">下装 · 黑色 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="dress" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#F7EDEE] to-[#FBF3F2]">
+<img alt="Floral slip dress displayed on mannequin" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/ffa00d90125c4ef6948325764ceb7a61.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 2 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">碎花吊带连衣裙</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">连衣裙 · 米底碎花 · 夏</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="coat" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#F4F0E6] to-[#F8F5EE]">
+<img alt="Beige trench coat laid flat on linen surface" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/d3a675c86222437896dab1955a356170.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 6 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">米色风衣</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">外套 · 米色 · 春秋</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="shoes" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EDF4F0] to-[#F6F8F4]">
+<img alt="White leather sneakers pair on light green background" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/ce487df1cf1a4f44a6cacf4f8f7aa1a0.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 42 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">白色小白鞋</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">鞋履 · 白色 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="bag" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#F6EFE8] to-[#F9F4EE]">
+<img alt="Caramel leather tote bag standing on white surface" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/169397fc1c794ca58268ea41559294b5.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 15 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">焦糖色托特包</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">包袋 · 焦糖棕 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="acc" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#F3F0F8] to-[#F8F6FA]">
+<img alt="Pearl necklace arranged on pale silk fabric" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/717a95658bef4a61826a9384919b1db2.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 4 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">珍珠锁骨链</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">配饰 · 珍珠白 · 四季</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="top" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#F8F2E9] to-[#FBF7F0]">
+<img alt="Cream oversized knit sweater folded on table" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/f297763e1a924f22a6d2aea19f7b5408.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 9 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">奶油色宽松毛衣</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">上装 · 奶油白 · 秋冬</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="shoes" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EDEEF4] to-[#F4F2F7]">
+<img alt="Black ankle boots pair on neutral background" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/2b0154395c384ea587c1c4b0b9b76614.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 1 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">黑色切尔西靴</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">鞋履 · 黑色 · 秋冬</p>
+</div>
+</a>
+<a class="item-card overflow-hidden rounded-[16px] border border-[#F1EBE3] bg-white shadow-[0_5px_14px_rgba(140,169,198,0.08)]" data-cat="coat" href="item_detail.html">
+<div class="relative aspect-[3/4] bg-gradient-to-br from-[#EEF2F6] to-[#E8EDF3]">
+<img alt="Grey wool blazer hanging in a closet" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/262c8723f0ea400e84332cf8f99c463d.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[10px] text-[#8A99A6]">图位 · 单品图</span>
+<span class="absolute bottom-1.5 right-1.5 rounded-full bg-[#3D4C5A]/70 px-2 py-0.5 text-[10px] text-white">穿 5 次</span>
+</div>
+<div class="p-2.5">
+<p class="truncate text-[13px] font-semibold text-[#3D4C5A]">灰色西装外套</p>
+<p class="mt-0.5 text-[10px] text-[#A9B4BD]">外套 · 浅灰 · 春秋</p>
+</div>
+</a>
+</div>
+<p class="hidden pt-16 text-center text-[13px] text-[#A9B4BD]" id="empty">该分类下暂时没有单品，去「拍照录入」添加吧</p>
+</div>
+<a class="absolute bottom-[96px] right-4 z-30 flex items-center gap-2 rounded-full bg-gradient-to-r from-[#8FAECB] to-[#E4A8AD] px-4 py-3 text-[13px] font-semibold text-white shadow-[0_12px_24px_rgba(140,169,198,0.4)]" href="capture.html">
+<iconify-icon class="text-[18px]" icon="ph:plus"></iconify-icon>
+      录入衣服
+    </a>
+<div class="absolute inset-0 z-40 hidden bg-[#2C3A46]/40" id="sortSheet">
+<div class="absolute bottom-0 w-full rounded-t-[22px] bg-white p-5 pb-7">
+<div class="mx-auto mb-4 h-1 w-10 rounded-full bg-[#E4DED5]"></div>
+<div class="flex items-center justify-between">
+<h3 class="text-[15px] font-semibold text-[#3D4C5A]">排序与筛选</h3>
+<button class="text-[13px] text-[#8A99A6]" onclick="closeSort()" type="button">关闭</button>
+</div>
+<p class="mt-4 text-[12px] font-medium text-[#7C8B99]">排序方式</p>
+<div class="mt-2 grid grid-cols-3 gap-2">
+<button class="sort-chip rounded-[12px] bg-[#55708C] px-2 py-2.5 text-[12px] text-white" onclick="pickSort(this, '最近添加')" type="button">最近添加</button>
+<button class="sort-chip rounded-[12px] border border-[#F1EBE3] bg-white px-2 py-2.5 text-[12px] text-[#6E7B88]" onclick="pickSort(this, '穿着次数')" type="button">穿着次数</button>
+<button class="sort-chip rounded-[12px] border border-[#F1EBE3] bg-white px-2 py-2.5 text-[12px] text-[#6E7B88]" onclick="pickSort(this, '购买时间')" type="button">购买时间</button>
+</div>
+<p class="mt-4 text-[12px] font-medium text-[#7C8B99]">只看</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<button class="sort-chip rounded-full border border-[#F1EBE3] bg-white px-3 py-1.5 text-[12px] text-[#6E7B88]" onclick="pickTag(this)" type="button">常穿（≥10 次）</button>
+<button class="sort-chip rounded-full border border-[#F1EBE3] bg-white px-3 py-1.5 text-[12px] text-[#6E7B88]" onclick="pickTag(this)" type="button">90 天未穿</button>
+<button class="sort-chip rounded-full border border-[#F1EBE3] bg-white px-3 py-1.5 text-[12px] text-[#6E7B88]" onclick="pickTag(this)" type="button">当季可穿</button>
+</div>
+<button class="mt-6 flex h-[48px] w-full items-center justify-center rounded-[16px] bg-[#55708C] text-[15px] font-semibold text-white" onclick="applySort()" type="button">应用排序</button>
+</div>
+</div>
+<nav class="relative shrink-0 h-[76px] border-t border-[#F1EBE3] bg-white/95 px-1">
+<div class="grid h-full grid-cols-5">
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="home.html">
+<iconify-icon class="text-[22px]" icon="ph:house"></iconify-icon>
+<span class="text-[10px]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#55708C]" href="wardrobe.html">
+<iconify-icon class="text-[22px]" icon="ph:t-shirt"></iconify-icon>
+<span class="text-[10px] font-medium">衣柜</span>
+</a>
+<a class="relative flex flex-col items-center pt-3" href="ai_outfit.html">
+<span class="absolute -top-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gradient-to-br from-[#8FAECB] to-[#E4A8AD] text-white shadow-[0_10px_22px_rgba(126,157,190,0.45)]">
+<iconify-icon class="text-[24px]" icon="ph:sparkle"></iconify-icon>
+</span>
+<span class="mt-[32px] text-[10px] text-[#A9B4BD]">AI搭配</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="idle_stats.html">
+<iconify-icon class="text-[22px]" icon="ph:chart-pie"></iconify-icon>
+<span class="text-[10px]">统计</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="profile.html">
+<iconify-icon class="text-[22px]" icon="ph:user"></iconify-icon>
+<span class="text-[10px]">我的</span>
+</a>
+</div>
+<div class="absolute bottom-[6px] left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-[#DDE3E8]"></div>
+</nav>
+<div class="pointer-events-none absolute bottom-[170px] left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-[#3D4C5A]/90 px-4 py-2 text-[12px] text-white" id="toast"></div>
+</div>
+<aside class="absolute right-8 top-1/2 hidden w-[300px] -translate-y-1/2 rounded-2xl border border-[#E7E0D6] bg-white/75 p-5 text-[#3D4C5A] shadow-[0_12px_30px_rgba(120,130,140,0.12)] backdrop-blur xl:block">
+<div class="flex items-center gap-2 text-[12px] text-[#8A99A6]">
+<span class="rounded-full bg-[#E3ECF4] px-2 py-0.5 font-semibold text-[#55708C]">04</span>
+<span>我的衣柜 · wardrobe.html</span>
+</div>
+<h3 class="mt-3 text-[15px] font-semibold">作用</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">数字衣橱主视图，按品类浏览全部单品，看清每件衣服的穿着次数。</p>
+<h3 class="mt-3 text-[15px] font-semibold">主要交互</h3>
+<ul class="mt-1 list-disc pl-4 text-[13px] leading-6 text-[#5E6E7C]">
+<li>顶部搜索框支持名称 / 颜色 / 标签搜索（含建议项）</li>
+<li>分类 Tab 点击实时过滤双列网格，无结果给出空状态</li>
+<li>右上角「排序与筛选」弹出底部面板，可选择排序方式与筛选条件</li>
+<li>右下角悬浮「+ 录入衣服」按钮进入拍照录入页</li>
+<li>衣物卡片点击进入衣物详情页</li>
+</ul>
+<h3 class="mt-3 text-[15px] font-semibold">跳转链路</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">item_detail.html / capture.html</p>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">画布 375×812 · iOS · 状态栏保留</p>
+</aside>
+<script>
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      window.clearTimeout(window.__t);
+      window.__t = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1700);
+    }
+
+    function filterCat(cat, btn) {
+      var buttons = document.querySelectorAll('[data-cat].rounded-full');
+      buttons.forEach(function (item) {
+        var on = item === btn;
+        item.className = on
+          ? 'shrink-0 rounded-full bg-[#55708C] px-3.5 py-1.5 text-[12px] font-medium text-white'
+          : 'shrink-0 rounded-full border border-[#F1EBE3] bg-white px-3.5 py-1.5 text-[12px] text-[#6E7B88]';
+      });
+      var cards = document.querySelectorAll('.item-card');
+      var visible = 0;
+      cards.forEach(function (card) {
+        var match = cat === 'all' || card.getAttribute('data-cat') === cat;
+        card.classList.toggle('hidden', !match);
+        if (match) { visible += 1; }
+      });
+      document.getElementById('empty').classList.toggle('hidden', visible > 0);
+    }
+
+    function openSort() {
+      document.getElementById('sortSheet').classList.remove('hidden');
+    }
+
+    function closeSort() {
+      document.getElementById('sortSheet').classList.add('hidden');
+    }
+
+    function pickSort(btn, name) {
+      document.querySelectorAll('#sortSheet .sort-chip').forEach(function (chip) {
+        chip.setAttribute('data-active', '0');
+      });
+      btn.setAttribute('data-active', '1');
+      showToast('已选择排序：' + name);
+    }
+
+    function pickTag(btn) {
+      var active = btn.getAttribute('data-active') === '1';
+      btn.setAttribute('data-active', active ? '0' : '1');
+      btn.classList.toggle('bg-[#E3ECF4]', !active);
+      btn.classList.toggle('border-[#8FAECB]', !active);
+      btn.classList.toggle('text-[#55708C]', !active);
+      btn.classList.toggle('bg-white', active);
+      btn.classList.toggle('border-[#F1EBE3]', active);
+      btn.classList.toggle('text-[#6E7B88]', active);
+    }
+
+    function applySort() {
+      closeSort();
+      showToast('排序已更新，衣柜按所选方式重新排列');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>穿穿OOTD · 闲置统计</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/echarts.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-sb::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#EFE9E1]">
+<div class="relative w-full h-full max-w-[375px] max-h-[812px] bg-[#FBF8F3] overflow-hidden flex flex-col shadow-[0_18px_50px_rgba(120,130,140,0.18)]">
+<div class="shrink-0 h-[44px] px-5 flex items-center justify-between text-[14px] font-semibold text-[#3D4C5A]">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<iconify-icon class="text-[14px]" icon="mdi:signal"></iconify-icon>
+<iconify-icon class="text-[14px]" icon="mdi:wifi"></iconify-icon>
+<iconify-icon class="text-[16px]" icon="mdi:battery"></iconify-icon>
+</div>
+</div>
+<header class="shrink-0 h-[52px] px-4 flex items-center justify-between">
+<a class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" href="home.html">
+<iconify-icon class="text-[20px]" icon="ph:caret-left"></iconify-icon>
+</a>
+<h1 class="text-[16px] font-semibold text-[#3D4C5A]">闲置统计</h1>
+<button class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F1EBE3] bg-white text-[#55708C]" onclick="showToast('统计口径：超过 90 天未穿着即视为闲置')" type="button">
+<iconify-icon class="text-[18px]" icon="ph:question"></iconify-icon>
+</button>
+</header>
+<div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-sb px-4 pb-24">
+<section class="grid grid-cols-3 gap-3">
+<div class="rounded-[16px] border border-[#F1EBE3] bg-white p-3">
+<p class="text-[10px] text-[#A9B4BD]">闲置件数</p>
+<p class="mt-1 text-[20px] font-bold text-[#3D4C5A]">18<span class="ml-0.5 text-[11px] font-normal text-[#8A99A6]">件</span></p>
+<p class="mt-0.5 text-[10px] text-[#C98A90]">占衣柜 21%</p>
+</div>
+<div class="rounded-[16px] border border-[#F1EBE3] bg-white p-3">
+<p class="text-[10px] text-[#A9B4BD]">闲置总价值</p>
+<p class="mt-1 text-[20px] font-bold text-[#3D4C5A]">¥3,860</p>
+<p class="mt-0.5 text-[10px] text-[#8A99A6]">约占总额 22%</p>
+</div>
+<div class="rounded-[16px] border border-[#F1EBE3] bg-white p-3">
+<p class="text-[10px] text-[#A9B4BD]">平均沉睡</p>
+<p class="mt-1 text-[20px] font-bold text-[#3D4C5A]">132<span class="ml-0.5 text-[11px] font-normal text-[#8A99A6]">天</span></p>
+<p class="mt-0.5 text-[10px] text-[#8A99A6]">最久 214 天</p>
+</div>
+</section>
+<section class="mt-4 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">闲置品类占比</h2>
+<span class="text-[11px] text-[#A9B4BD]">单位：件</span>
+</div>
+<div class="mt-2 h-[196px] w-full" id="pieChart"></div>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">近 90 天穿着频次</h2>
+<span class="text-[11px] text-[#A9B4BD]">单位：次 / 半月</span>
+</div>
+<div class="mt-2 h-[180px] w-full" id="barChart"></div>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">沉睡衣物 TOP10</h2>
+<span class="text-[11px] text-[#A9B4BD]">超过 90 天未穿</span>
+</div>
+<div class="mt-3 divide-y divide-[#F4EFE8]">
+<div class="flex items-center gap-3 py-2.5">
+<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F7E3E4] text-[11px] font-semibold text-[#C98A90]">1</span>
+<span class="relative h-[46px] w-[46px] shrink-0 overflow-hidden rounded-[12px] bg-gradient-to-br from-[#EFEFF2] to-[#E8E9EC]">
+<img alt="Black ankle boots thumbnail in sleeping clothes list" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/1dbb768e79e64ba58ed9ce246af67301.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[7px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1">
+<span class="block truncate text-[13px] text-[#3D4C5A]">黑色切尔西靴</span>
+<span class="mt-0.5 block text-[10px] text-[#A9B4BD]">鞋履 · 214 天未穿 · ¥899</span>
+</span>
+<button class="shrink-0 rounded-full border border-[#8FAECB] px-2.5 py-1.5 text-[11px] text-[#55708C]" onclick="openAction('黑色切尔西靴')" type="button">挂闲置</button>
+</div>
+<div class="flex items-center gap-3 py-2.5">
+<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F7E3E4] text-[11px] font-semibold text-[#C98A90]">2</span>
+<span class="relative h-[46px] w-[46px] shrink-0 overflow-hidden rounded-[12px] bg-gradient-to-br from-[#F3F0F8] to-[#F8F6FA]">
+<img alt="Pearl necklace thumbnail in sleeping clothes list" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/203acf034e5e4838a63205cc383613e6.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[7px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1">
+<span class="block truncate text-[13px] text-[#3D4C5A]">珍珠锁骨链</span>
+<span class="mt-0.5 block text-[10px] text-[#A9B4BD]">配饰 · 186 天未穿 · ¥199</span>
+</span>
+<button class="shrink-0 rounded-full border border-[#8FAECB] px-2.5 py-1.5 text-[11px] text-[#55708C]" onclick="openAction('珍珠锁骨链')" type="button">挂闲置</button>
+</div>
+<div class="flex items-center gap-3 py-2.5">
+<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F7E3E4] text-[11px] font-semibold text-[#C98A90]">3</span>
+<span class="relative h-[46px] w-[46px] shrink-0 overflow-hidden rounded-[12px] bg-gradient-to-br from-[#F7EDEE] to-[#FBF3F2]">
+<img alt="Floral slip dress thumbnail in sleeping clothes list" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/10e5e3d5236344ceae5babb1d1da106c.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[7px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1">
+<span class="block truncate text-[13px] text-[#3D4C5A]">碎花吊带连衣裙</span>
+<span class="mt-0.5 block text-[10px] text-[#A9B4BD]">连衣裙 · 158 天未穿 · ¥459</span>
+</span>
+<button class="shrink-0 rounded-full border border-[#8FAECB] px-2.5 py-1.5 text-[11px] text-[#55708C]" onclick="openAction('碎花吊带连衣裙')" type="button">挂闲置</button>
+</div>
+<div class="flex items-center gap-3 py-2.5">
+<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F7E3E4] text-[11px] font-semibold text-[#C98A90]">4</span>
+<span class="relative h-[46px] w-[46px] shrink-0 overflow-hidden rounded-[12px] bg-gradient-to-br from-[#EEF2F6] to-[#E8EDF3]">
+<img alt="Grey wool blazer thumbnail in sleeping clothes list" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/3ef2b5ea74a34c3288bcace1564fd1c7.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[7px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1">
+<span class="block truncate text-[13px] text-[#3D4C5A]">灰色西装外套</span>
+<span class="mt-0.5 block text-[10px] text-[#A9B4BD]">外套 · 142 天未穿 · ¥699</span>
+</span>
+<button class="shrink-0 rounded-full border border-[#8FAECB] px-2.5 py-1.5 text-[11px] text-[#55708C]" onclick="openAction('灰色西装外套')" type="button">挂闲置</button>
+</div>
+<div class="flex items-center gap-3 py-2.5">
+<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E9F1F8] text-[11px] font-semibold text-[#55708C]">5</span>
+<span class="relative h-[46px] w-[46px] shrink-0 overflow-hidden rounded-[12px] bg-gradient-to-br from-[#F8F2E9] to-[#FBF7F0]">
+<img alt="Cream oversized sweater thumbnail in sleeping clothes list" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/0534db6794344e7a8be1f36f0e2996de.jpg"/>
+<span class="absolute bottom-0.5 left-0.5 text-[7px] text-[#8A99A6]">图位</span>
+</span>
+<span class="min-w-0 flex-1">
+<span class="block truncate text-[13px] text-[#3D4C5A]">奶油色宽松毛衣</span>
+<span class="mt-0.5 block text-[10px] text-[#A9B4BD]">上装 · 96 天未穿 · ¥399</span>
+</span>
+<button class="shrink-0 rounded-full border border-[#8FAECB] px-2.5 py-1.5 text-[11px] text-[#55708C]" onclick="openAction('奶油色宽松毛衣')" type="button">挂闲置</button>
+</div>
+</div>
+<button class="mt-2 w-full rounded-[12px] bg-[#F7F4EF] py-2.5 text-[12px] text-[#7E9DBE]" onclick="showToast('展开全部 10 件沉睡衣物')" type="button">查看其余 5 件</button>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">让闲置流动起来</h2>
+<p class="mt-1 text-[11px] leading-5 text-[#8A99A6]">按二手均价估算，18 件闲置可回收约 ¥2,310；捐赠可兑换 240 点心意值。</p>
+<div class="mt-3 flex gap-3">
+<button class="flex h-[46px] flex-1 items-center justify-center gap-1.5 rounded-[14px] bg-gradient-to-r from-[#8FAECB] to-[#E4A8AD] text-[13px] font-semibold text-white" onclick="openAction('全部闲置单品')" type="button">
+<iconify-icon class="text-[16px]" icon="ph:tag"></iconify-icon>
+            一键挂闲置
+          </button>
+<button class="flex h-[46px] flex-1 items-center justify-center gap-1.5 rounded-[14px] border border-[#8FAECB] bg-white text-[13px] font-medium text-[#55708C]" onclick="showToast('已跳转捐赠预约：最近回收点 1.2km')" type="button">
+<iconify-icon class="text-[16px]" icon="ph:hand-heart"></iconify-icon>
+            预约捐赠
+          </button>
+</div>
+</section>
+</div>
+<div class="absolute inset-0 z-40 hidden bg-[#2C3A46]/40" id="actionSheet">
+<div class="absolute bottom-0 w-full rounded-t-[22px] bg-white p-5 pb-7">
+<div class="mx-auto mb-4 h-1 w-10 rounded-full bg-[#E4DED5]"></div>
+<h3 class="text-[15px] font-semibold text-[#3D4C5A]" id="actionTitle">挂闲置 · 黑色切尔西靴</h3>
+<p class="mt-1 text-[11px] text-[#8A99A6]">选择处理方式，系统会给出参考报价</p>
+<div class="mt-4 space-y-2.5">
+<button class="flex w-full items-center gap-3 rounded-[14px] border border-[#F1EBE3] p-3 text-left" onclick="closeAction('已生成挂闲置信息，等待买家咨询')" type="button">
+<span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#E9F1F8] text-[#55708C]"><iconify-icon class="text-[17px]" icon="ph:tag"></iconify-icon></span>
+<span class="flex-1">
+<span class="block text-[13px] font-medium text-[#3D4C5A]">挂到二手平台</span>
+<span class="mt-0.5 block text-[11px] text-[#A9B4BD]">参考价 ¥360 · 圈内平均 12 天售出</span>
+</span>
+<iconify-icon class="text-[16px] text-[#C9D2D9]" icon="ph:caret-right"></iconify-icon>
+</button>
+<button class="flex w-full items-center gap-3 rounded-[14px] border border-[#F1EBE3] p-3 text-left" onclick="closeAction('已预约捐赠，回收员将在 48 小时内上门')" type="button">
+<span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#EDF4F0] text-[#6E9A7E]"><iconify-icon class="text-[17px]" icon="ph:hand-heart"></iconify-icon></span>
+<span class="flex-1">
+<span class="block text-[13px] font-medium text-[#3D4C5A]">预约上门捐赠</span>
+<span class="mt-0.5 block text-[11px] text-[#A9B4BD]">可获 15 点心意值，用于兑换清洗券</span>
+</span>
+<iconify-icon class="text-[16px] text-[#C9D2D9]" icon="ph:caret-right"></iconify-icon>
+</button>
+<button class="flex w-full items-center gap-3 rounded-[14px] border border-[#F1EBE3] p-3 text-left" onclick="closeAction('已继续保留，30 天后将再次提醒')" type="button">
+<span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#F7F3EA] text-[#A98F5C]"><iconify-icon class="text-[17px]" icon="ph:archive"></iconify-icon></span>
+<span class="flex-1">
+<span class="block text-[13px] font-medium text-[#3D4C5A]">暂不处理</span>
+<span class="mt-0.5 block text-[11px] text-[#A9B4BD]">30 天后再次提醒我</span>
+</span>
+<iconify-icon class="text-[16px] text-[#C9D2D9]" icon="ph:caret-right"></iconify-icon>
+</button>
+</div>
+</div>
+</div>
+<nav class="relative shrink-0 h-[76px] border-t border-[#F1EBE3] bg-white/95 px-1">
+<div class="grid h-full grid-cols-5">
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="home.html">
+<iconify-icon class="text-[22px]" icon="ph:house"></iconify-icon>
+<span class="text-[10px]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="wardrobe.html">
+<iconify-icon class="text-[22px]" icon="ph:t-shirt"></iconify-icon>
+<span class="text-[10px]">衣柜</span>
+</a>
+<a class="relative flex flex-col items-center pt-3" href="ai_outfit.html">
+<span class="absolute -top-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gradient-to-br from-[#8FAECB] to-[#E4A8AD] text-white shadow-[0_10px_22px_rgba(126,157,190,0.45)]">
+<iconify-icon class="text-[24px]" icon="ph:sparkle"></iconify-icon>
+</span>
+<span class="mt-[32px] text-[10px] text-[#A9B4BD]">AI搭配</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#55708C]" href="idle_stats.html">
+<iconify-icon class="text-[22px]" icon="ph:chart-pie"></iconify-icon>
+<span class="text-[10px] font-medium">统计</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="profile.html">
+<iconify-icon class="text-[22px]" icon="ph:user"></iconify-icon>
+<span class="text-[10px]">我的</span>
+</a>
+</div>
+<div class="absolute bottom-[6px] left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-[#DDE3E8]"></div>
+</nav>
+<div class="pointer-events-none absolute bottom-[170px] left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-[#3D4C5A]/90 px-4 py-2 text-[12px] text-white" id="toast"></div>
+</div>
+<aside class="absolute right-8 top-1/2 hidden w-[300px] -translate-y-1/2 rounded-2xl border border-[#E7E0D6] bg-white/75 p-5 text-[#3D4C5A] shadow-[0_12px_30px_rgba(120,130,140,0.12)] backdrop-blur xl:block">
+<div class="flex items-center gap-2 text-[12px] text-[#8A99A6]">
+<span class="rounded-full bg-[#E3ECF4] px-2 py-0.5 font-semibold text-[#55708C]">10</span>
+<span>闲置统计页 · idle_stats.html</span>
+</div>
+<h3 class="mt-3 text-[15px] font-semibold">作用</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">把「买多了忘记穿」变成可行动的数据：品类占比、穿着频次、沉睡清单与闲置估值。</p>
+<h3 class="mt-3 text-[15px] font-semibold">主要交互</h3>
+<ul class="mt-1 list-disc pl-4 text-[13px] leading-6 text-[#5E6E7C]">
+<li>ECharts 环形饼图展示闲置品类占比（悬停显示件数与百分比）</li>
+<li>ECharts 柱状图展示近 90 天穿着频次（按半月统计）</li>
+<li>沉睡衣物 TOP10 每行「挂闲置」打开处理方式面板（二手 / 捐赠 / 暂不处理）</li>
+<li>底部「一键挂闲置 / 预约捐赠」给出结果轻提示</li>
+</ul>
+<h3 class="mt-3 text-[15px] font-semibold">跳转链路</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">返回 → home.html；衣柜协同 → wardrobe.html</p>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">画布 375×812 · iOS · 状态栏保留</p>
+</aside>
+<script>
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      window.clearTimeout(window.__t);
+      window.__t = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1900);
+    }
+
+    function openAction(name) {
+      document.getElementById('actionTitle').textContent = '挂闲置 · ' + name;
+      document.getElementById('actionSheet').classList.remove('hidden');
+    }
+
+    function closeAction(msg) {
+      document.getElementById('actionSheet').classList.add('hidden');
+      showToast(msg);
+    }
+
+    function initCharts() {
+      var palette = ['#8FAECB', '#E4A8AD', '#B9CBD8', '#F0CDC7', '#C9D8C5', '#D8CBE4'];
+
+      var pie = echarts.init(document.getElementById('pieChart'));
+      pie.setOption({
+        color: palette,
+        tooltip: { trigger: 'item', formatter: '{b}<br/>{c} 件（{d}%）' },
+        legend: {
+          bottom: 0,
+          icon: 'circle',
+          itemWidth: 8,
+          itemHeight: 8,
+          itemGap: 10,
+          textStyle: { fontSize: 10, color: '#7C8B99' }
+        },
+        series: [
+          {
+            type: 'pie',
+            radius: ['46%', '70%'],
+            center: ['50%', '40%'],
+            avoidLabelOverlap: true,
+            itemStyle: { borderColor: '#FFFFFF', borderWidth: 3 },
+            label: { show: false },
+            labelLine: { show: false },
+            data: [
+              { value: 5, name: '上装' },
+              { value: 4, name: '外套' },
+              { value: 3, name: '鞋履' },
+              { value: 3, name: '连衣裙' },
+              { value: 2, name: '包袋' },
+              { value: 1, name: '配饰' }
+            ]
+          }
+        ]
+      });
+
+      var bar = echarts.init(document.getElementById('barChart'));
+      bar.setOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: '{b}<br/>穿着 {c} 次' },
+        grid: { left: 4, right: 8, top: 16, bottom: 4, containLabel: true },
+        xAxis: {
+          type: 'category',
+          data: ['7月上', '7月下', '8月上', '8月下', '9月上', '9月下', '10月'],
+          axisLine: { lineStyle: { color: '#EFE9E1' } },
+          axisTick: { show: false },
+          axisLabel: { fontSize: 9, color: '#A9B4BD' }
+        },
+        yAxis: {
+          type: 'value',
+          splitLine: { lineStyle: { color: '#F4EFE8' } },
+          axisLabel: { fontSize: 9, color: '#A9B4BD' }
+        },
+        series: [
+          {
+            type: 'bar',
+            data: [18, 21, 15, 24, 19, 14, 6],
+            barWidth: '52%',
+            itemStyle: { borderRadius: [6, 6, 0, 0], color: '#8FAECB' },
+            emphasis: { itemStyle: { color: '#E4A8AD' } }
+          }
+        ]
+      });
+
+      window.addEventListener('resize', function () {
+        pie.resize();
+        bar.resize();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCharts);
+    } else {
+      initCharts();
+    }
+  </script>
+</body>
+</html>

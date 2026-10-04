@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>穿穿OOTD · 发布 OOTD</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .no-sb { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-sb::-webkit-scrollbar { display: none; }
+  textarea { resize: none; }
+  textarea::placeholder { color: #B4BFC8; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#EFE9E1]">
+<div class="relative w-full h-full max-w-[375px] max-h-[812px] bg-[#FBF8F3] overflow-hidden flex flex-col shadow-[0_18px_50px_rgba(120,130,140,0.18)]">
+<div class="shrink-0 h-[44px] px-5 flex items-center justify-between text-[14px] font-semibold text-[#3D4C5A]">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<iconify-icon class="text-[14px]" icon="mdi:signal"></iconify-icon>
+<iconify-icon class="text-[14px]" icon="mdi:wifi"></iconify-icon>
+<iconify-icon class="text-[16px]" icon="mdi:battery"></iconify-icon>
+</div>
+</div>
+<header class="shrink-0 h-[52px] px-4 flex items-center justify-between">
+<a class="text-[13px] text-[#8A99A6]" href="outfit_library.html">取消</a>
+<h1 class="text-[16px] font-semibold text-[#3D4C5A]">发布 OOTD</h1>
+<a class="rounded-full bg-[#55708C] px-4 py-1.5 text-[12px] font-medium text-white" href="plaza.html" onclick="return doPublish()">发布</a>
+</header>
+<div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-sb px-4 pb-6">
+<section class="rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">选择一套搭配</h2>
+<span class="text-[11px] text-[#A9B4BD]">来自我的搭配</span>
+</div>
+<div class="mt-3 flex gap-3 overflow-x-auto no-sb pb-1">
+<button class="pick-outfit w-[124px] shrink-0 text-left" onclick="pickOutfit(this, '奶油通勤三件套')" type="button">
+<span class="relative block h-[148px] overflow-hidden rounded-[14px] border-2 border-[#8FAECB] bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]">
+<img alt="Cream cardigan outfit selected for publishing OOTD" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/8c622b3aa12644cd9a2fb5fe5bfe6e3c.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位</span>
+<span class="js-look-check absolute right-1.5 top-1.5 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-[#55708C] text-[12px] text-white">
+<iconify-icon icon="ph:check"></iconify-icon>
+</span>
+</span>
+<span class="pick-label mt-1.5 block truncate text-[12px] text-[#3D4C5A]">奶油通勤三件套</span>
+</button>
+<button class="pick-outfit w-[124px] shrink-0 text-left" onclick="pickOutfit(this, '米色风衣面试装')" type="button">
+<span class="relative block h-[148px] overflow-hidden rounded-[14px] border-2 border-transparent bg-gradient-to-br from-[#F7EDEE] to-[#F3EFF7]">
+<img alt="Beige trench coat outfit candidate for publishing" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/caf15f3c676f488aa6177d3869f9282e.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位</span>
+<span class="js-look-check absolute right-1.5 top-1.5 z-10 hidden h-5 w-5 items-center justify-center rounded-full bg-[#55708C] text-[12px] text-white">
+<iconify-icon icon="ph:check"></iconify-icon>
+</span>
+</span>
+<span class="pick-label mt-1.5 block truncate text-[12px] text-[#6E7B88]">米色风衣面试装</span>
+</button>
+<button class="pick-outfit w-[124px] shrink-0 text-left" onclick="pickOutfit(this, '奶油毛衣居家松弛装')" type="button">
+<span class="relative block h-[148px] overflow-hidden rounded-[14px] border-2 border-transparent bg-gradient-to-br from-[#EDF4F0] to-[#F6F1E9]">
+<img alt="Cozy sweater outfit candidate for publishing" class="h-full w-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-10-04/f5b14997f39548e3bc0018c122a1393d.jpg"/>
+<span class="absolute left-1.5 top-1.5 rounded bg-white/85 px-1.5 py-0.5 text-[9px] text-[#8A99A6]">图位</span>
+<span class="js-look-check absolute right-1.5 top-1.5 z-10 hidden h-5 w-5 items-center justify-center rounded-full bg-[#55708C] text-[12px] text-white">
+<iconify-icon icon="ph:check"></iconify-icon>
+</span>
+</span>
+<span class="pick-label mt-1.5 block truncate text-[12px] text-[#6E7B88]">奶油毛衣居家松弛装</span>
+</button>
+</div>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">说点什么</h2>
+<textarea class="mt-3 w-full rounded-[14px] bg-[#F7F4EF] p-3 text-[13px] leading-6 text-[#3D4C5A] outline-none" id="caption" oninput="countChars()" placeholder="今天 22℃ 多云，穿了奶油白针织开衫，通勤路上被同事问链接了～" rows="4"></textarea>
+<div class="mt-2 flex items-center justify-between">
+<button class="flex items-center gap-1 text-[11px] text-[#7E9DBE]" onclick="fillCaption()" type="button">
+<iconify-icon class="text-[13px]" icon="ph:magic-wand"></iconify-icon>
+            AI 帮我写文案
+          </button>
+<span class="text-[11px] text-[#A9B4BD]" id="counter">0 / 200</span>
+</div>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">话题标签</h2>
+<div class="mt-3 flex flex-wrap gap-2" id="topicWrap">
+<span class="topic inline-flex items-center gap-1 rounded-full bg-[#E9F1F8] px-2.5 py-1 text-[11px] text-[#55708C]">
+            #今日OOTD
+            <button onclick="removeTopic(this)" type="button"><iconify-icon class="text-[11px]" icon="ph:x"></iconify-icon></button>
+</span>
+<span class="topic inline-flex items-center gap-1 rounded-full bg-[#F7E3E4] px-2.5 py-1 text-[11px] text-[#C98A90]">
+            #通勤穿搭
+            <button onclick="removeTopic(this)" type="button"><iconify-icon class="text-[11px]" icon="ph:x"></iconify-icon></button>
+</span>
+</div>
+<div class="mt-3 flex flex-wrap gap-2">
+<button class="rounded-full border border-[#E7E0D6] bg-white px-2.5 py-1 text-[11px] text-[#6E7B88]" onclick="addTopic(this, '#早秋穿搭', 'bg-[#EDF4F0] text-[#6E9A7E]')" type="button">#早秋穿搭</button>
+<button class="rounded-full border border-[#E7E0D6] bg-white px-2.5 py-1 text-[11px] text-[#6E7B88]" onclick="addTopic(this, '#小个子显高', 'bg-[#F1EFF8] text-[#7E76A8]')" type="button">#小个子显高</button>
+<button class="rounded-full border border-[#E7E0D6] bg-white px-2.5 py-1 text-[11px] text-[#6E7B88]" onclick="addTopic(this, '#梨形身材', 'bg-[#F8F2E9] text-[#A98F5C]')" type="button">#梨形身材</button>
+</div>
+</section>
+<section class="mt-3 rounded-[16px] border border-[#F1EBE3] bg-white p-4">
+<h2 class="text-[14px] font-semibold text-[#3D4C5A]">场合与天气</h2>
+<p class="mt-2 text-[11px] text-[#A9B4BD]">场合</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<button class="scene-opt rounded-full bg-[#55708C] px-3.5 py-2 text-[12px] text-white" onclick="pickScene(this)" type="button">通勤</button>
+<button class="scene-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]" onclick="pickScene(this)" type="button">约会</button>
+<button class="scene-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]" onclick="pickScene(this)" type="button">旅行</button>
+<button class="scene-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]" onclick="pickScene(this)" type="button">居家</button>
+</div>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">天气</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<button class="weather-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]" onclick="pickWeather(this)" type="button">晴 24℃</button>
+<button class="weather-opt rounded-full bg-[#55708C] px-3.5 py-2 text-[12px] text-white" onclick="pickWeather(this)" type="button">多云 22℃</button>
+<button class="weather-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]" onclick="pickWeather(this)" type="button">小雨 18℃</button>
+</div>
+<div class="mt-3 flex items-center justify-between rounded-[12px] bg-[#F7F4EF] px-3 py-2.5">
+<span class="text-[12px] text-[#8A99A6]">同步到搭配日历</span>
+<button class="flex h-6 w-11 items-center rounded-full bg-[#55708C] p-0.5" onclick="toggleSwitch(this)" type="button">
+<span class="ml-auto h-5 w-5 rounded-full bg-white"></span>
+</button>
+</div>
+</section>
+<button class="mt-5 flex h-[52px] w-full items-center justify-center gap-2 rounded-[16px] bg-gradient-to-r from-[#8FAECB] to-[#E4A8AD] text-[16px] font-semibold text-white shadow-[0_12px_24px_rgba(140,169,198,0.32)]" onclick="location.href = 'plaza.html'" type="button">
+<iconify-icon class="text-[19px]" icon="ph:paper-plane-tilt"></iconify-icon>
+        发布到穿搭广场
+      </button>
+<p class="mt-3 text-center text-[11px] text-[#A9B4BD]">发布后其他用户可点赞与收藏，你的搭配也会记录进日历</p>
+</div>
+<nav class="relative shrink-0 h-[76px] border-t border-[#F1EBE3] bg-white/95 px-1">
+<div class="grid h-full grid-cols-5">
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="home.html">
+<iconify-icon class="text-[22px]" icon="ph:house"></iconify-icon>
+<span class="text-[10px]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="wardrobe.html">
+<iconify-icon class="text-[22px]" icon="ph:t-shirt"></iconify-icon>
+<span class="text-[10px]">衣柜</span>
+</a>
+<a class="relative flex flex-col items-center pt-3" href="ai_outfit.html">
+<span class="absolute -top-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-gradient-to-br from-[#8FAECB] to-[#E4A8AD] text-white shadow-[0_10px_22px_rgba(126,157,190,0.45)]">
+<iconify-icon class="text-[24px]" icon="ph:sparkle"></iconify-icon>
+</span>
+<span class="mt-[32px] text-[10px] text-[#A9B4BD]">AI搭配</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="idle_stats.html">
+<iconify-icon class="text-[22px]" icon="ph:chart-pie"></iconify-icon>
+<span class="text-[10px]">统计</span>
+</a>
+<a class="flex flex-col items-center gap-1 pt-3 text-[#A9B4BD]" href="profile.html">
+<iconify-icon class="text-[22px]" icon="ph:user"></iconify-icon>
+<span class="text-[10px]">我的</span>
+</a>
+</div>
+<div class="absolute bottom-[6px] left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-[#DDE3E8]"></div>
+</nav>
+<div class="pointer-events-none absolute bottom-[170px] left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-[#3D4C5A]/90 px-4 py-2 text-[12px] text-white" id="toast"></div>
+</div>
+<aside class="absolute right-8 top-1/2 hidden w-[300px] -translate-y-1/2 rounded-2xl border border-[#E7E0D6] bg-white/75 p-5 text-[#3D4C5A] shadow-[0_12px_30px_rgba(120,130,140,0.12)] backdrop-blur xl:block">
+<div class="flex items-center gap-2 text-[12px] text-[#8A99A6]">
+<span class="rounded-full bg-[#E3ECF4] px-2 py-0.5 font-semibold text-[#55708C]">11</span>
+<span>OOTD 发布页 · ootd_publish.html</span>
+</div>
+<h3 class="mt-3 text-[15px] font-semibold">作用</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">把衣柜里的搭配变成可分享的内容，附带场合、天气与话题，沉淀个人风格档案。</p>
+<h3 class="mt-3 text-[15px] font-semibold">主要交互</h3>
+<ul class="mt-1 list-disc pl-4 text-[13px] leading-6 text-[#5E6E7C]">
+<li>横向卡片选择一套已保存搭配（单选，选中显示对勾）</li>
+<li>文案输入实时字数统计，「AI 帮我写文案」一键填充</li>
+<li>话题标签可删除，也可点推荐标签添加（自动去重）</li>
+<li>场合 / 天气单选，可开关同步到搭配日历</li>
+<li>发布前校验是否已选搭配，通过后跳转穿搭广场</li>
+</ul>
+<h3 class="mt-3 text-[15px] font-semibold">跳转链路</h3>
+<p class="mt-1 text-[13px] leading-6 text-[#5E6E7C]">发布 / 按钮 → plaza.html；取消 → outfit_library.html</p>
+<p class="mt-3 text-[11px] text-[#A9B4BD]">画布 375×812 · iOS · 状态栏保留</p>
+</aside>
+<script>
+    var picked = '奶油通勤三件套';
+
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      window.clearTimeout(window.__t);
+      window.__t = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1900);
+    }
+
+    function pickOutfit(btn, name) {
+      picked = name;
+      document.querySelectorAll('.pick-outfit').forEach(function (item) {
+        var frame = item.querySelector('span');
+        var check = item.querySelector('.js-look-check');
+        var label = item.querySelector('.pick-label');
+        frame.className = 'relative block h-[148px] overflow-hidden rounded-[14px] border-2 border-transparent bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]';
+        check.classList.add('hidden');
+        check.classList.remove('flex');
+        label.className = 'pick-label mt-1.5 block truncate text-[12px] text-[#6E7B88]';
+      });
+      var frame = btn.querySelector('span');
+      var check = btn.querySelector('.js-look-check');
+      var label = btn.querySelector('.pick-label');
+      frame.className = 'relative block h-[148px] overflow-hidden rounded-[14px] border-2 border-[#8FAECB] bg-gradient-to-br from-[#EEF4F9] to-[#F7EDEE]';
+      check.classList.remove('hidden');
+      check.classList.add('flex');
+      label.className = 'pick-label mt-1.5 block truncate text-[12px] text-[#3D4C5A]';
+      showToast('已选择「' + name + '」');
+    }
+
+    function countChars() {
+      var len = document.getElementById('caption').value.length;
+      document.getElementById('counter').textContent = len + ' / 200';
+    }
+
+    function fillCaption() {
+      var text = '今天 22℃ 多云，翻出了衣柜里躺了很久的奶油白针织开衫，配雾霾蓝衬衫和直筒牛仔裤，通勤路上被同事问链接啦～';
+      document.getElementById('caption').value = text;
+      countChars();
+      showToast('AI 已生成一版文案，可直接修改');
+    }
+
+    function removeTopic(btn) {
+      var tag = btn.closest('.topic');
+      if (tag) { tag.remove(); }
+    }
+
+    function addTopic(btn, label, colorClass) {
+      var wrap = document.getElementById('topicWrap');
+      var exists = false;
+      wrap.querySelectorAll('.topic').forEach(function (item) {
+        if (item.textContent.trim() === label) { exists = true; }
+      });
+      if (exists) {
+        showToast('该话题已添加');
+        return;
+      }
+      var tag = document.createElement('span');
+      tag.className = 'topic inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] ' + colorClass;
+      tag.appendChild(document.createTextNode(label));
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.innerHTML = '<iconify-icon icon="ph:x" class="text-[11px]"><\/iconify-icon>';
+      del.onclick = function () { removeTopic(del); };
+      tag.appendChild(del);
+      wrap.appendChild(tag);
+      showToast('已添加话题 ' + label);
+    }
+
+    function pickScene(btn) {
+      document.querySelectorAll('.scene-opt').forEach(function (item) {
+        item.className = 'scene-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]';
+      });
+      btn.className = 'scene-opt rounded-full bg-[#55708C] px-3.5 py-2 text-[12px] text-white';
+    }
+
+    function pickWeather(btn) {
+      document.querySelectorAll('.weather-opt').forEach(function (item) {
+        item.className = 'weather-opt rounded-full border border-[#F1EBE3] bg-white px-3.5 py-2 text-[12px] text-[#6E7B88]';
+      });
+      btn.className = 'weather-opt rounded-full bg-[#55708C] px-3.5 py-2 text-[12px] text-white';
+    }
+
+    function toggleSwitch(btn) {
+      var on = btn.className.indexOf('bg-[#55708C]') >= 0;
+      var knob = btn.querySelector('span');
+      if (on) {
+        btn.className = 'flex h-6 w-11 items-center rounded-full bg-[#DDE3E8] p-0.5';
+        knob.className = 'mr-auto h-5 w-5 rounded-full bg-white shadow-sm';
+      } else {
+        btn.className = 'flex h-6 w-11 items-center rounded-full bg-[#55708C] p-0.5';
+        knob.className = 'ml-auto h-5 w-5 rounded-full bg-white';
+      }
+    }
+
+    function doPublish() {
+      var text = document.getElementById('caption').value.trim();
+      if (text.length === 0) {
+        showToast('写点什么再发布吧～');
+        return false;
+      }
+      if (text.length > 200) {
+        showToast('文案请控制在 200 字以内');
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
